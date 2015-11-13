@@ -125,7 +125,10 @@ int main( int argc, char* args[] )
             {
                 if(Event.key.keysym.sym == SDLK_p){
                     if(pause == false)
+                    {
                         pause = true;
+                        Mix_PauseMusic();
+                    }
                     else
                         pause = false;
                 }
@@ -163,6 +166,7 @@ int main( int argc, char* args[] )
 
         //SDL_Delay(17-(SDL_GetTicks()-last_frame));
         if(pause == false){
+            Mix_ResumeMusic();
             double diferencia = SDL_GetTicks()-last_frame;
             double ajuste = 17 - diferencia;
             if(ajuste>0)

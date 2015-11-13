@@ -588,39 +588,47 @@
 1446229851 source:/home/turupawn/Clases/Progra3Capybara/Lab/SDL2TestSimple-master/Enemigo.cpp
 	"Enemigo.h"
 
-1446840340 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\main.cpp
+1447399575 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<iostream>
+	<fstream>
+	<list>
 	"Jugador.h"
 	"Enemigo.h"
 	"Giant.h"
 	"Knight.h"
 	"Alien.h"
+	"Proyectil.h"
 
-1446789076 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\jugador.h
+1447394917 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\jugador.h
+	<list>
+	<fstream>
 	"Personaje.h"
+	"Proyectil.h"
 
-1446833213 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\personaje.h
+1447350757 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\personaje.h
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
 	<vector>
 	<map>
+	"Entidad.h"
 
-1446839024 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\enemigo.h
+1447352797 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\enemigo.h
 	"Personaje.h"
 	"Jugador.h"
 	<stdlib.h>
+	<list>
 
-1446834531 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\enemigo.cpp
+1447352174 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\enemigo.cpp
 	"Enemigo.h"
 
-1446789076 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\jugador.cpp
+1447399750 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\jugador.cpp
 	"Jugador.h"
 
-1446833213 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\personaje.cpp
+1447353472 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\personaje.cpp
 	"Personaje.h"
 
 1394937196 c:\mingw_dev_lib\include\sdl2\sdl.h
@@ -940,21 +948,45 @@
 	"begin_code.h"
 	"close_code.h"
 
-1446835662 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\alien.cpp
+1447399057 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\alien.cpp
 	"Alien.h"
 
-1446834632 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\alien.h
+1447397575 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\alien.h
 	"Enemigo.h"
+	"Proyectil.h"
+	<stdlib.h>
+	<list>
 
-1446839012 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\giant.cpp
+1447399057 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\giant.cpp
 	"Giant.h"
 
-1446832523 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\giant.h
+1447394903 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\giant.h
 	"Enemigo.h"
+	<stdlib.h>
+	<list>
 
-1446839966 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\knight.cpp
+1447399057 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\knight.cpp
 	"Knight.h"
 
-1446837631 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\knight.h
+1447394903 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\knight.h
+	"Enemigo.h"
+	<stdlib.h>
+	<list>
+
+1447394903 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\entidad.h
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<list>
+
+1447265927 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\entidad.cpp
+	"Entidad.h"
+
+1447400012 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\proyectil.cpp
+	"Proyectil.h"
+
+1447399971 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\proyectil.h
+	<list>
+	"Entidad.h"
 	"Enemigo.h"
 

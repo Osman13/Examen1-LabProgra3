@@ -1,6 +1,6 @@
 #include "Enemigo.h"
 
-Enemigo::Enemigo(SDL_Renderer* renderer, Jugador* jugador)
+Enemigo::Enemigo(list<Entidad*>* entidades,SDL_Renderer* renderer)
 {
 
 }

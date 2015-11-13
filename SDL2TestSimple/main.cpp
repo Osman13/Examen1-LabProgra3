@@ -1,21 +1,24 @@
-
 #include<SDL.h>
 #include<SDL_image.h>
 #include<SDL_mixer.h>
 #include<iostream>
+#include<fstream>
+#include<list>
 
 #include "Jugador.h"
 #include "Enemigo.h"
 #include "Giant.h"
 #include "Knight.h"
 #include "Alien.h"
+#include "Proyectil.h"
 
 SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Event Event;
 SDL_Texture *background,*character;
-SDL_Rect rect_background,rect_character,wall;
+SDL_Rect rect_background,rect_character;
 Mix_Music* music = NULL;
+Mix_Chunk *gMedium = NULL;
 
 
 using namespace std;
@@ -47,6 +50,7 @@ int main( int argc, char* args[] )
 
     //Load music
     music = Mix_LoadMUS("darkmoon.wav");
+    gMedium = Mix_LoadWAV("laser.wav");
 
     //Init textures
     int w=0,h=0;
@@ -57,19 +61,14 @@ int main( int argc, char* args[] )
     rect_background.w = w;
     rect_background.h = h;
 
-    wall.x = 300;
-    wall.y = 40;
-    wall.w = 40;
-    wall.h = 400;
-
-    Jugador jugador(renderer);
-
     Mix_PlayMusic(music, -1);
 
-    vector<Enemigo*> enemigos;
-    enemigos.push_back(new Giant(renderer,&jugador));
-    enemigos.push_back(new Knight(renderer,&jugador));
-    enemigos.push_back(new Alien(renderer,&jugador));
+    list<Entidad*>entidades;
+    Jugador* jg1 = new Jugador(&entidades,renderer);
+    entidades.push_back(jg1);
+    entidades.push_back(new Giant(&entidades, renderer));
+    entidades.push_back(new Knight(&entidades, renderer));
+    entidades.push_back(new Alien(&entidades, renderer));
 
     double last_frame=0;
 
@@ -84,32 +83,45 @@ int main( int argc, char* args[] )
             }
             if(Event.type == SDL_KEYDOWN)
             {
-                if(Event.key.keysym.sym == SDLK_d)
-                    rect_character.x++;
+                switch(Event.key.keysym.sym)
+                {
+                    case SDLK_z:
+                    Mix_PlayChannel(-1, gMedium, 0);
+                    break;
+                }
             }
         }
-
         //SDL_Delay(17-(SDL_GetTicks()-last_frame));
         double diferencia = SDL_GetTicks()-last_frame;
-        cout<<"Diferencia: "<<diferencia<<endl;
         double ajuste = 17 - diferencia;
-        cout<<"Ajuste: "<<ajuste<<endl;
         if(ajuste>0)
             SDL_Delay(ajuste);
         last_frame=SDL_GetTicks();
-        cout<<SDL_GetTicks()<<endl;
+
+        for(list<Entidad*>::iterator e = entidades.begin();
+            e!=entidades.end();
+            e++)
+            (*e)->logica();
 
 
-        jugador.logica();
-        for(int i=0;i<enemigos.size();i++)
-            enemigos[i]->logica();
+        for(list<Entidad*>::iterator e = entidades.begin();
+            e!=entidades.end();
+            e++)
+        {
+            if((*e)->delete_flag)
+            {
+                entidades.remove(*e);
+                break;
+            }
+        }
 
         SDL_RenderCopy(renderer, background, NULL, &rect_background);
-        SDL_RenderCopy(renderer, character, NULL, &rect_character);
 
-        jugador.dibujar();
-        for(int i=0;i<enemigos.size();i++)
-            enemigos[i]->dibujar();
+        for(list<Entidad*>::iterator e = entidades.begin();
+            e!=entidades.end();
+            e++)
+            (*e)->dibujar();
+
         SDL_RenderPresent(renderer);
     }
 

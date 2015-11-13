@@ -1,7 +1,8 @@
 #include "Alien.h"
 
-Alien::Alien(SDL_Renderer* renderer, Jugador* jugador) : Enemigo(renderer, jugador)
+Alien::Alien(list<Entidad*>* entidades,SDL_Renderer* renderer) : Enemigo(entidades, renderer)
 {
+    tipo = "Enemigo";
     this->renderer = renderer;
     this->jugador = jugador;
     this->textures["down"].push_back(IMG_LoadTexture(renderer, "Enemigo/Enemigo3/down1.png"));
@@ -16,6 +17,8 @@ Alien::Alien(SDL_Renderer* renderer, Jugador* jugador) : Enemigo(renderer, jugad
     SDL_QueryTexture(this->textures["down"][0], NULL, NULL, &rect.w, &rect.h);
     x = rand()%100;
     y = rand()%100;
+    rect.x=x;
+    rect.y=x;
 
     velocity=0.5;
     animation_velocity=20;
@@ -23,6 +26,18 @@ Alien::Alien(SDL_Renderer* renderer, Jugador* jugador) : Enemigo(renderer, jugad
     current_texture=0;
 
     state="down";
+
+    this->entidades = entidades;
+
+    for(list<Entidad*>::iterator e=entidades->begin();
+        e!=entidades->end();
+        e++)
+    {
+        if((*e)->tipo=="Jugador")
+        {
+            jugador = (Jugador*)*e;
+        }
+    }
 }
 
 Alien::~Alien()
@@ -32,21 +47,26 @@ Alien::~Alien()
 
 void Alien::logica()
 {
-    if(jugador->y+5<y)
+    if(jugador->x-5>x)
     {
-        state="up";
+        state="right";
     }
-    if(jugador->y-5>y)
+    if(jugador->x+5<x)
+    {
+        state="left";
+    }
+    if(state=="right")
+    {
+        x+=velocity;
+    }
+    if(state=="left")
+    {
+        x-=velocity;
+    }
+
+    if(jugador->x == x && jugador->y == y)
     {
         state="down";
-    }
-    if(state=="up")
-    {
-        y-=velocity;
-    }
-    if(state=="down")
-    {
-        y+=velocity;
     }
 
     if(frames%animation_velocity==0)
@@ -55,6 +75,7 @@ void Alien::logica()
         if(current_texture>=textures[state].size())
             current_texture=0;
     }
+
 
     frames++;
 }

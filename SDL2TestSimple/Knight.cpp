@@ -1,7 +1,8 @@
 #include "Knight.h"
 
-Knight::Knight(SDL_Renderer* renderer, Jugador* jugador) : Enemigo(renderer, jugador)
+Knight::Knight(list<Entidad*>* entidades,SDL_Renderer* renderer) : Enemigo(entidades, renderer)
 {
+    tipo = "Enemigo";
     this->renderer = renderer;
     this->jugador = jugador;
     this->textures["down"].push_back(IMG_LoadTexture(renderer, "Enemigo/Enemigo2/down1.png"));
@@ -16,13 +17,27 @@ Knight::Knight(SDL_Renderer* renderer, Jugador* jugador) : Enemigo(renderer, jug
     SDL_QueryTexture(this->textures["down"][0], NULL, NULL, &rect.w, &rect.h);
     x = rand()%100;
     y = rand()%100;
+    rect.x=x;
+    rect.y=x;
 
-    velocity=1;
+    velocity=0.5;
     animation_velocity=20;
 
     current_texture=0;
 
     state="down";
+
+    this->entidades = entidades;
+
+    for(list<Entidad*>::iterator e=entidades->begin();
+        e!=entidades->end();
+        e++)
+    {
+        if((*e)->tipo=="Jugador")
+        {
+            jugador = (Jugador*)*e;
+        }
+    }
 }
 
 Knight::~Knight()
@@ -32,26 +47,28 @@ Knight::~Knight()
 
 void Knight::logica()
 {
-    if(jugador->x+10<x)
+    if(jugador->y+5<y)
     {
-        state="right";
+        state="up";
     }
-    if(jugador->x-10>x)
+    if(jugador->y-5>y)
     {
-        state="left";
+        state="down";
     }
-    if(state=="right")
+    if(jugador->x+5<x)
     {
+        x-=velocity;
+    }
+    if(jugador->x-5>x)
         x+=velocity;
-    }
-    if(state=="left")
+
+    if(state=="up")
     {
-        x-=velocity;
+        y-=velocity;
     }
-    if(width >=100)
+    if(state=="down")
     {
-        state="left";
-        x-=velocity;
+        y+=velocity;
     }
 
     if(frames%animation_velocity==0)

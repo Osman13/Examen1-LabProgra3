@@ -1,7 +1,8 @@
 #include "Jugador.h"
 
-Jugador::Jugador(SDL_Renderer* renderer)
+Jugador::Jugador(list<Entidad*>* entidades,SDL_Renderer* renderer)
 {
+    tipo = "Jugador";
     this->renderer = renderer;
     this->textures["down"].push_back(IMG_LoadTexture(renderer, "Personaje/down1.png"));
     this->textures["down"].push_back(IMG_LoadTexture(renderer, "Personaje/down2.png"));
@@ -13,8 +14,10 @@ Jugador::Jugador(SDL_Renderer* renderer)
     this->textures["right"].push_back(IMG_LoadTexture(renderer, "Personaje/right2.png"));
 
     SDL_QueryTexture(this->textures["down"][0], NULL, NULL, &rect.w, &rect.h);
-    x = 0;
-    y = 0;
+    x = 200;
+    y = 100;
+    rect.x = x;
+    rect.y = x;
 
     velocity=1.5;
     animation_velocity=20;
@@ -22,6 +25,8 @@ Jugador::Jugador(SDL_Renderer* renderer)
     current_texture=0;
 
     state="down";
+
+    this->entidades = entidades;
 }
 
 Jugador::~Jugador()
@@ -53,6 +58,13 @@ void Jugador::logica()
         y+=velocity;
         state="down";
     }
+
+    if( currentKeyStates[ SDL_SCANCODE_Z ] )
+    {
+        Proyectil *p = new Proyectil(entidades,renderer,x,y,state);
+        entidades->push_back(p);
+    }
+
 
     if(frames%animation_velocity==0)
     {

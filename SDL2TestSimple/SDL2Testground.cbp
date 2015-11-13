@@ -37,6 +37,8 @@
 		<Unit filename="Alien.h" />
 		<Unit filename="Enemigo.cpp" />
 		<Unit filename="Enemigo.h" />
+		<Unit filename="Entidad.cpp" />
+		<Unit filename="Entidad.h" />
 		<Unit filename="Giant.cpp" />
 		<Unit filename="Giant.h" />
 		<Unit filename="Jugador.cpp" />
@@ -45,6 +47,8 @@
 		<Unit filename="Knight.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
+		<Unit filename="Proyectil.cpp" />
+		<Unit filename="Proyectil.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

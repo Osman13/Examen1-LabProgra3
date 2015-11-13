@@ -7,9 +7,11 @@
 #include<vector>
 #include<map>
 
+#include "Entidad.h"
+
 using namespace std;
 
-class Personaje
+class Personaje : public Entidad
 {
     public:
         SDL_Renderer* renderer;
@@ -24,7 +26,6 @@ class Personaje
         Personaje();
         virtual ~Personaje();
         virtual void dibujar();
-        virtual void logica()=0;
     protected:
     private:
 };

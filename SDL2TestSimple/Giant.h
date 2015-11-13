@@ -2,11 +2,13 @@
 #define GIANT_H
 
 #include "Enemigo.h"
+#include <stdlib.h>
+#include <list>
 
 class Giant : public Enemigo
 {
     public:
-        Giant(SDL_Renderer* renderer,Jugador* jugador);
+        Giant(list<Entidad*>* entidades,SDL_Renderer* renderer);
         virtual ~Giant();
         void logica();
     protected:

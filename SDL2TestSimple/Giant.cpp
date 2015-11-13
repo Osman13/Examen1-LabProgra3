@@ -1,7 +1,8 @@
 #include "Giant.h"
 
-Giant::Giant(SDL_Renderer* renderer,Jugador* jugador) : Enemigo(renderer, jugador)
+Giant::Giant(list<Entidad*>* entidades,SDL_Renderer* renderer) : Enemigo(entidades, renderer)
 {
+    tipo = "Enemigo";
     this->renderer = renderer;
     this->jugador = jugador;
     this->textures["down"].push_back(IMG_LoadTexture(renderer, "Enemigo/Enemigo1/down1.png"));
@@ -16,6 +17,8 @@ Giant::Giant(SDL_Renderer* renderer,Jugador* jugador) : Enemigo(renderer, jugado
     SDL_QueryTexture(this->textures["down"][0], NULL, NULL, &rect.w, &rect.h);
     x = rand()%100;
     y = rand()%100;
+    rect.x=x;
+    rect.y=x;
 
     velocity=0.5;
     animation_velocity=20;
@@ -23,6 +26,18 @@ Giant::Giant(SDL_Renderer* renderer,Jugador* jugador) : Enemigo(renderer, jugado
     current_texture=0;
 
     state="down";
+
+    this->entidades = entidades;
+
+    for(list<Entidad*>::iterator e=entidades->begin();
+        e!=entidades->end();
+        e++)
+    {
+        if((*e)->tipo=="Jugador")
+        {
+            jugador = (Jugador*)*e;
+        }
+    }
 }
 
 Giant::~Giant()

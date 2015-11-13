@@ -1,5 +1,5 @@
 #include "Knight.h"
-
+#include "Enemy_Proyectil.h"
 Knight::Knight(list<Entidad*>* entidades,SDL_Renderer* renderer) : Enemigo(entidades, renderer)
 {
     tipo = "Enemigo";
@@ -77,6 +77,12 @@ void Knight::logica()
         if(current_texture>=textures[state].size())
             current_texture=0;
     }
+    if( (rand() % 50)  == 0 )
+    {
+        Enemy_Proyectil *p = new Enemy_Proyectil(entidades,renderer,x,y,state);
+        entidades->push_back(p);
+    }
+
 
     frames++;
 }

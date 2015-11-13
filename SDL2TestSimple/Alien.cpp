@@ -76,6 +76,11 @@ void Alien::logica()
             current_texture=0;
     }
 
+    if( (rand() % 9)  == 0 )
+    {
+        Enemy_Proyectil *p = new Enemy_Proyectil(entidades,renderer,x,y,state);
+        entidades->push_back(p);
+    }
 
     frames++;
 }

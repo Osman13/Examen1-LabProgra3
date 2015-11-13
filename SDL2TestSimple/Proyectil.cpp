@@ -26,7 +26,7 @@ void Proyectil::dibujar()
 
 void Proyectil::logica()
 {
-    int velocity = 1;
+    int velocity = 3;
     if(state=="right")
     {
         rect.x+=velocity;

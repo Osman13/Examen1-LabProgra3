@@ -45,6 +45,8 @@
 		<Unit filename="Jugador.h" />
 		<Unit filename="Knight.cpp" />
 		<Unit filename="Knight.h" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
 		<Unit filename="Proyectil.cpp" />

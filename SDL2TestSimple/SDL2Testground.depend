@@ -588,7 +588,7 @@
 1446229851 source:/home/turupawn/Clases/Progra3Capybara/Lab/SDL2TestSimple-master/Enemigo.cpp
 	"Enemigo.h"
 
-1447399575 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\main.cpp
+1447438353 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -601,6 +601,7 @@
 	"Knight.h"
 	"Alien.h"
 	"Proyectil.h"
+	"Menu.h"
 
 1447394917 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\jugador.h
 	<list>
@@ -982,11 +983,19 @@
 1447265927 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\entidad.cpp
 	"Entidad.h"
 
-1447400012 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\proyectil.cpp
+1447429921 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\proyectil.cpp
 	"Proyectil.h"
 
 1447399971 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\proyectil.h
 	<list>
 	"Entidad.h"
 	"Enemigo.h"
+
+1447435825 source:c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\menu.cpp
+	"Menu.h"
+
+1447435825 c:\users\olman\documents\osman oliva unitec\programación iii\sdl2testsimple\menu.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
 

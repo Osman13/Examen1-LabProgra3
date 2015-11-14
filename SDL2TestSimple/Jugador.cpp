@@ -13,8 +13,8 @@ Jugador::Jugador(SDL_Renderer* renderer)
     this->textures["right"].push_back(IMG_LoadTexture(renderer, "Personaje/right2.png"));
 
     SDL_QueryTexture(this->textures["down"][0], NULL, NULL, &rect.w, &rect.h);
-    x = 0;
-    y = 0;
+    x = 230;
+    y = 100;
 
     velocity=1.5;
     animation_velocity=20;

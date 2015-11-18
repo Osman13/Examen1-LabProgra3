@@ -45,7 +45,7 @@ void Enemy_Proyectil::logica()
             {
                 jugador->delete_flag = true;
                 this->delete_flag = true;
-                cout<<"Enemigo Eliminado"<<endl;
+                cout<<"Jugador Eliminado"<<endl;
             }
         }
     }

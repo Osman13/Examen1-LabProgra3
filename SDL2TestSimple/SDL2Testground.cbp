@@ -37,6 +37,8 @@
 		<Unit filename="Alien.h" />
 		<Unit filename="Enemigo.cpp" />
 		<Unit filename="Enemigo.h" />
+		<Unit filename="Enemy_Proyectil.cpp" />
+		<Unit filename="Enemy_Proyectil.h" />
 		<Unit filename="Entidad.cpp" />
 		<Unit filename="Entidad.h" />
 		<Unit filename="Giant.cpp" />
